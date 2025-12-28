@@ -66,6 +66,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [openMenu, setOpenMenu] = useState(null);
+  const [mobileOpen, setMobileOpen] = useState(null)
 
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
@@ -140,9 +141,46 @@ const Navbar = () => {
 
         {/* MOBILE MENU ICON */}
         <div className="lg:hidden">
-          <i className="ri-menu-3-line text-3xl cursor-pointer"></i>
+          <i className="ri-menu-3-line text-3xl cursor-pointer" 
+          onClick={() => setMobileOpen(!mobileOpen)}
+          ></i>
         </div>
       </div>
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            className="lg:hidden bg-white shadow-md px-6 py-4"
+          >
+            {Object.keys(menuData).map((menu) => (
+              <div key={menu} className="mb-4">
+                <h3
+                  className="font-semibold text-blue-600 mb-2 cursor-pointer"
+                  onClick={() => navigate(menuData[menu].route)}
+                >
+                  {menu}
+                </h3>
+
+                <ul className="space-y-2 pl-3">
+                  {menuData[menu].info.map((item, i) => (
+                    <li
+                      key={i}
+                      onClick={() =>
+                        scrollToSection(item.id, menuData[menu].route)
+                      }
+                      className="text-gray-600 cursor-pointer hover:text-blue-600"
+                    >
+                      {item.name}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 };

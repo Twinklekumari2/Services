@@ -7,11 +7,13 @@ import AppDev from '../src/components/AppDev'
 import Custom from '../src/components/Custom'
 import UI from '../src/components/UI'
 import ECommerce from '../src/components/E-commerce'
+import HeroPage from '../src/components/HeroPage'
 
 const Services = () => {
   return (
     <div>
         <Navbar/>
+        <HeroPage/>
         <Website/>
         <AppDev/>
         <Custom/>

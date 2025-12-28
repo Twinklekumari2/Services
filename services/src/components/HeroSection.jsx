@@ -34,7 +34,6 @@ const HeroSection = () => {
 
   return (
     <section className="relative w-full h-screen overflow-hidden">
-      {/* Background Video */}
       <video
         ref={videoRef}
         src={videoIT}
@@ -45,10 +44,8 @@ const HeroSection = () => {
         className="absolute inset-0 w-full h-full object-cover"
       />
 
-      {/* Dark Overlay */}
       <div className="absolute inset-0 bg-black/50"></div>
 
-      {/* Content */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-6">
         <h1 className="text-4xl md:text-6xl font-extrabold">
           Building Digital Solutions
