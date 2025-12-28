@@ -47,7 +47,7 @@ const Work = () => {
   },[])
 
   return (
-    <section className="py-28 px-4 bg-gray-50" ref={sectionRef}>
+    <section className="py-28 px-4 bg-gray-50" ref={sectionRef} id="work-section">
       <div className="max-w-6xl mx-auto text-center mb-20">
         <h1 className="text-6xl font-extrabold font-poppins">How It Works?</h1>
         <p className="mt-3 text-black max-w-2xl mx-auto mb-8">

@@ -6,55 +6,36 @@ import devnest from './../assets/devnest.png'
 const menuData = {
   Home: {
     info: [
-      "What is Rabbit?",
-      "Rabbit Breeds",
-      "Average Lifespan",
-      "Male vs Female",
-      "Indoor vs Outdoor",
-      "Myths vs Facts",
+      { name: "What service we provide?", id: "services-section" },
+      { name: "Why Choose us?", id: "choose-section" },
+      { name: "How it works?", id: "work-section" },
+      { name: "Testimonials", id: "testimonial-section" },
+      { name: "Our Tech stack", id: "tech-section" },
+      { name: "CTA", id: "cta-section" },
     ],
     route: "/",
   },
   Services: {
     info: [
-      "Digestive Diseases",
-      "Skin Diseases",
-      "Dental Problems",
-      "Eye & Ear Diseases",
-      "Viral Diseases",
-      "Parasites",
     ],
     route: "/services",
   },
   Process: {
-    info: ["Not Eating", "Loose Stool", "Head Tilt", "Fur Loss", "Sneezing"],
+    info: [],
     route: "/process",
   },
   About: {
     info: [
-      "Daily Diet",
-      "Safe Foods",
-      "Dangerous Foods",
-      "Hay Importance",
-      "Water Intake",
-      "Baby Rabbit Diet",
-      "Sick Rabbit Diet",
     ],
     route: "/about-us",
   },
   Contact: {
     info: [
-      "Housing",
-      "Cleaning Routine",
-      "Exercise Time",
-      "Sleep Cycle",
-      "Bonding & Handling",
-      "Seasonal Care",
     ],
     route: "/contact-us",
   },
   CaseStudio: {
-    info: ["When to Visit Vet", "First Aid", "Emergency Signs"],
+    info: [],
     route: "/case-studio",
   },
 };
@@ -63,6 +44,14 @@ const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [openMenu, setOpenMenu] = useState(null);
+
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if(element){
+        element.scrollIntoView({behavior: "smooth"})
+    }
+    setOpenMenu(false);
+  }
 
   return (
     <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md shadow-md">
@@ -113,9 +102,10 @@ const Navbar = () => {
                       {menuData[menu].info.map((item, i) => (
                         <li
                           key={i}
+                          onClick={() => scrollToSection(item.id)}
                           className="px-3 py-2 rounded-md cursor-pointer text-gray-700 hover:bg-black hover:text-white transition"
                         >
-                          {item}
+                          {item.name}
                         </li>
                       ))}
                     </ul>

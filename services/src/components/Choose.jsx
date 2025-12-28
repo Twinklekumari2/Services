@@ -18,7 +18,7 @@ const Choose = () => {
     })
   },[])
   return (
-    <div className="bg-linear-to-r from-blue-500 to-blue-700 text-white py-24 px-4">
+    <section className="bg-linear-to-r from-blue-500 to-blue-700 text-white py-24 px-4" id='choose-section'>
       <div className="max-w-6xl mx-auto text-center" ref={sectionRef}>
         <h1 className="text-4xl mb-12 font-extrabold">Why Choose Us?</h1>
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
@@ -48,7 +48,7 @@ const Choose = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   )
 }
 

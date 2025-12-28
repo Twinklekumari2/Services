@@ -29,7 +29,7 @@ const TechStack = () => {
   ];
 
   return (
-    <section className="py-32 px-4 bg-white">
+    <section className="py-32 px-4 bg-white" id="tech-section">
       <div className="max-w-7xl mx-auto text-center">
         <h1 className="text-6xl font-extrabold mb-4">
           Our Tech Stack

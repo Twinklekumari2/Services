@@ -41,7 +41,7 @@ const Services = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="w-full bg-white py-22">
+    <section ref={sectionRef} className="w-full bg-white py-22" id="services-section">
       <div className="max-w-7xl mx-auto px-6">
         <h1
           ref={headingRef}
