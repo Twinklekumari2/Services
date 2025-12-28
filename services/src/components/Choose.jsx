@@ -1,9 +1,25 @@
-import React from 'react'
+import React, {useRef} from 'react'
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
 
 const Choose = () => {
+    const sectionRef = useRef(null);
+    useGSAP(() => {
+    gsap.from(sectionRef.current, {
+        y:60,
+        opacity:0,
+        ease:0.3,
+        scrollTrigger:{
+            trigger: sectionRef.current,
+            start: "top 50%",
+            end:"top 20%",
+            scrub: true,
+        }
+    })
+  },[])
   return (
     <div className="bg-linear-to-r from-blue-500 to-blue-700 text-white py-24 px-4">
-      <div className="max-w-6xl mx-auto text-center">
+      <div className="max-w-6xl mx-auto text-center" ref={sectionRef}>
         <h1 className="text-4xl mb-12 font-extrabold">Why Choose Us?</h1>
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
           <div className="cursor-pointer bg-white/10 p-6 rounded-lg shadow-lg hover:scale-105 hover:bg-white/20 transition-all">

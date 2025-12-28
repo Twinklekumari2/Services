@@ -52,11 +52,11 @@ const HeroSection = () => {
         </p>
 
         <div className="mt-6 flex gap-4">
-          <button className="px-6 py-3 bg-blue-600 rounded-lg hover:bg-blue-700 transition cursor-pointer">
+          <button className="px-6 py-3 outline-0 bg-blue-600 rounded-lg hover:bg-blue-700 transition cursor-pointer">
             Get Started
           </button>
           <button
-            className="px-6 py-3 border cursor-pointer border-white rounded-lg hover:bg-white hover:text-black transition"
+            className="px-6 py-3 border outline-0 cursor-pointer border-white rounded-lg hover:bg-white hover:text-black transition"
             onClick={() => navigate("/services")}
           >
             Learn More
