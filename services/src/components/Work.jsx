@@ -4,9 +4,29 @@ import img4 from "./../assets/img4.jpg";
 import img2 from "./../assets/img2.jpg";
 import img5 from "./../assets/img5.jpg";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 
+gsap.registerPlugin(ScrollTrigger);
+
+
 const Work = () => {
+  const sectionRef = useRef(null);
+  const headingRef = useRef(null);
+
+  useGSAP(() => {
+    gsap.from(headingRef.current, {
+      y: 40,
+      opacity: 0,
+      duration: 0.3,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top 50%", 
+        toggleActions: "play none none none",
+        scrub:true
+      },
+    })},[]);
   const steps = [
     {
       title: "Discovery & Planning",
@@ -30,25 +50,9 @@ const Work = () => {
     },
   ];
 
-  const sectionRef = useRef(null);
-
-  useGSAP(() => {
-    gsap.from(sectionRef.current, {
-        y:40,
-        opacity:0,
-        ease:0.3,
-        scrollTrigger:{
-            trigger: sectionRef.current,
-            start: "top 50%",
-            end:"top 45%",
-            scrub: true,
-        }
-    })
-  },[])
-
   return (
     <section className="py-28 px-4 bg-gray-50" ref={sectionRef} id="work-section">
-      <div className="max-w-6xl mx-auto text-center mb-20">
+      <div ref={headingRef} className="max-w-6xl mx-auto text-center mb-20">
         <h1 className="text-6xl font-extrabold font-poppins">How It Works?</h1>
         <p className="mt-3 text-black max-w-2xl mx-auto mb-8">
           We make sure you feel confident and informed every step of the way.

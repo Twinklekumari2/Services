@@ -1,9 +1,30 @@
-import React from "react";
+import React, {useRef} from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Testimonial = () => {
+  const sectionRef = useRef(null);
+  const headingRef = useRef(null);
+
+  useGSAP(() => {
+    gsap.from(headingRef.current, {
+      y: 40,
+      opacity: 0,
+      duration: 0.3,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top 50%", 
+        toggleActions: "play none none none",
+        scrub:true
+      },
+    })},[]);
   return (
-    <section className="py-10 px-4 bg-linear-to-r from-blue-400 to-blue-600" id="testimonial-section">
-      <div className="max-w-7xl mx-auto py-3">
+    <section ref={sectionRef} className="py-10 px-4 bg-linear-to-r from-blue-400 to-blue-600" id="testimonial-section">
+      <div ref={headingRef} className="max-w-7xl mx-auto py-3">
         <h1 className="text-6xl font-extrabold text-center mb-16">
           Testimonials
         </h1>
@@ -11,36 +32,6 @@ const Testimonial = () => {
         {/* Horizontal Scroll Container */}
         <div className="flex gap-6 overflow-x-auto flex-nowrap pb-4 scrollbar-hide">
           
-          {/* Card 1 */}
-          <div className="min-w-87.5 bg-white p-6 rounded-xl shadow-lg">
-            <h1 className="text-yellow-400 text-xl mb-2">⭐⭐⭐⭐⭐</h1>
-            <h2 className="text-xl font-semibold mb-3">
-              “Impressive attention to detail and clean execution.”
-            </h2>
-            <p className="text-gray-600 mb-4">
-              Twinkle shows strong understanding of modern UI/UX principles.
-              Her work is well-structured, visually clean, and thoughtfully designed.
-            </p>
-            <h3 className="font-semibold">
-              — Senior Web Development Mentor
-            </h3>
-          </div>
-
-          {/* Card 1 */}
-          <div className="min-w-87.5 bg-white p-6 rounded-xl shadow-lg">
-            <h1 className="text-yellow-400 text-xl mb-2">⭐⭐⭐⭐⭐</h1>
-            <h2 className="text-xl font-semibold mb-3">
-              “Impressive attention to detail and clean execution.”
-            </h2>
-            <p className="text-gray-600 mb-4">
-              Twinkle shows strong understanding of modern UI/UX principles.
-              Her work is well-structured, visually clean, and thoughtfully designed.
-            </p>
-            <h3 className="font-semibold">
-              — Senior Web Development Mentor
-            </h3>
-          </div>
-
           {/* Card 1 */}
           <div className="min-w-87.5 bg-white p-6 rounded-xl shadow-lg">
             <h1 className="text-yellow-400 text-xl mb-2">⭐⭐⭐⭐⭐</h1>
@@ -85,6 +76,38 @@ const Testimonial = () => {
               — Technical Reviewer
             </h3>
           </div>
+
+          {/* Card 1 */}
+          <div className="min-w-87.5 bg-white p-6 rounded-xl shadow-lg">
+            <h1 className="text-yellow-400 text-xl mb-2">⭐⭐⭐⭐⭐</h1>
+            <h2 className="text-xl font-semibold mb-3">
+              “Impressive attention to detail and clean execution.”
+            </h2>
+            <p className="text-gray-600 mb-4">
+              Twinkle shows strong understanding of modern UI/UX principles.
+              Her work is well-structured, visually clean, and thoughtfully designed.
+            </p>
+            <h3 className="font-semibold">
+              — Senior Web Development Mentor
+            </h3>
+          </div>
+
+          {/* Card 1 */}
+          <div className="min-w-87.5 bg-white p-6 rounded-xl shadow-lg">
+            <h1 className="text-yellow-400 text-xl mb-2">⭐⭐⭐⭐⭐</h1>
+            <h2 className="text-xl font-semibold mb-3">
+              “Impressive attention to detail and clean execution.”
+            </h2>
+            <p className="text-gray-600 mb-4">
+              Twinkle shows strong understanding of modern UI/UX principles.
+              Her work is well-structured, visually clean, and thoughtfully designed.
+            </p>
+            <h3 className="font-semibold">
+              — Senior Web Development Mentor
+            </h3>
+          </div>
+
+          
 
         </div>
       </div>

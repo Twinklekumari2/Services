@@ -1,4 +1,7 @@
-import React from "react";
+import React, {useRef} from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 import { FaReact, FaNodeJs, FaAws } from "react-icons/fa";
 import {
   SiMongodb,
@@ -12,14 +15,30 @@ import {
   SiGreensock,
 } from "react-icons/si";
 
+gsap.registerPlugin(ScrollTrigger);
+
 const TechStack = () => {
+  const sectionRef = useRef(null);
+  const headingRef = useRef(null);
+
+  useGSAP(() => {
+    gsap.from(headingRef.current, {
+      y: 40,
+      opacity: 0,
+      duration: 0.3,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top 50%", 
+        toggleActions: "play none none none",
+        scrub:true
+      },
+    })},[]);
   const techs = [
     { name: "React", icon: <FaReact />, color: "text-sky-500" },
     { name: "Node.js", icon: <FaNodeJs />, color: "text-green-600" },
     { name: "Express.js", icon: <SiExpress />, color: "text-gray-800" },
     { name: "MongoDB", icon: <SiMongodb />, color: "text-green-500" },
-    // { name: "Firebase", icon: <SiFirebase />, color: "text-yellow-500" },
-    // { name: "AWS", icon: <FaAws />, color: "text-orange-500" },
     { name: "Tailwind CSS", icon: <SiTailwindcss />, color: "text-cyan-500" },
     { name: "Framer Motion", icon: <SiFramer />, color: "text-black" },
     { name: "GSAP", icon: <SiGreensock />, color: "text-green-700" },
@@ -29,8 +48,8 @@ const TechStack = () => {
   ];
 
   return (
-    <section className="py-32 px-4 bg-white" id="tech-section">
-      <div className="max-w-7xl mx-auto text-center">
+    <section ref={sectionRef} className="py-32 px-4 bg-white" id="tech-section">
+      <div ref={headingRef} className="max-w-7xl mx-auto text-center">
         <h1 className="text-6xl font-extrabold mb-4">
           Our Tech Stack
         </h1>

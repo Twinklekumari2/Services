@@ -7,10 +7,10 @@ import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(ScrollTrigger);
 
 const Services = () => {
-  const sectionRef = useRef(null);
-  const headingRef = useRef(null);
   const imgRef = useRef(null);
   const imgParent = useRef(null);
+  const sectionRef = useRef(null);
+  const headingRef = useRef(null);
 
   useGSAP(() => {
     gsap.from(headingRef.current, {

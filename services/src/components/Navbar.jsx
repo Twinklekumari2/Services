@@ -17,28 +17,50 @@ const menuData = {
   },
   Services: {
     info: [
+      { name: "Website Development", id: "website-section" },
+      { name: "Mobile App Development", id: "mobile-section" },
+      { name: "Custom Technical Solutions", id: "custom-section" },
+      { name: "UI/UX Design", id: "uiux-section" },
+      { name: "E-commerce Solutions", id: "ecommerce-section" },
     ],
     route: "/services",
   },
   Process: {
-    info: [],
+    info: [
+      { name: "Discovery & Planning", id: "discovery-section" },
+      { name: "Design & Development", id: "design-section" },
+      { name: "Testing & Launch", id: "testing-section" },
+      { name: "Support & Growth", id: "support-section" },
+    ],
     route: "/process",
   },
   About: {
     info: [
+      { name: "Our Mission", id: "mission-section" },
+      { name: "Our Vision", id: "vision-section" },
+      { name: "Meet the Team", id: "team-section" },
+      { name: "Company Values", id: "values-section" },
     ],
     route: "/about-us",
   },
   Contact: {
     info: [
+      { name: "Get in Touch", id: "contact-form-section" },
+      { name: "Office Location", id: "location-section" },
+      { name: "Support & Queries", id: "support-section" },
     ],
     route: "/contact-us",
   },
   CaseStudio: {
-    info: [],
+    info: [
+      { name: "Client Case Studies", id: "case-study-section" },
+      { name: "Project Highlights", id: "project-section" },
+      { name: "Success Stories", id: "success-section" },
+    ],
     route: "/case-studio",
   },
 };
+
 
 const Navbar = () => {
   const navigate = useNavigate();

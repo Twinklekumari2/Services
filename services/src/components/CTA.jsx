@@ -18,11 +18,11 @@ const CTA = () => {
 
         {/* Buttons */}
         <div className="flex flex-col sm:flex-row justify-center gap-6">
-          <button className="bg-white text-blue-600 font-semibold px-10 py-4 rounded-full hover:bg-blue-100 transition">
+          <button className="bg-white cursor-pointer text-blue-600 font-semibold px-10 py-4 rounded-full hover:bg-blue-100 transition">
             Get a Free Consultation
           </button>
 
-          <button className="border-2 border-white px-10 py-4 rounded-full font-semibold hover:bg-white hover:text-blue-600 transition">
+          <button className="border-2 cursor-pointer border-white px-10 py-4 rounded-full font-semibold hover:bg-white hover:text-blue-600 transition">
             Start Your Project
           </button>
         </div>
