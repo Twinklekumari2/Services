@@ -25,6 +25,13 @@ const HeroSection = () => {
     }
   }, []);
 
+  const handleClick = () => {
+    const element = document.getElementById('services-section');
+    if(element){
+        element.scrollIntoView({behavior: "smooth"})
+    }
+  }
+
   return (
     <section className="relative w-full h-screen overflow-hidden">
       {/* Background Video */}
@@ -52,7 +59,9 @@ const HeroSection = () => {
         </p>
 
         <div className="mt-6 flex gap-4">
-          <button className="px-6 py-3 outline-0 bg-blue-600 rounded-lg hover:bg-blue-700 transition cursor-pointer">
+          <button className="px-6 py-3 outline-0 bg-blue-600 rounded-lg hover:bg-blue-700 transition cursor-pointer"
+          onClick={handleClick}
+          >
             Get Started
           </button>
           <button
