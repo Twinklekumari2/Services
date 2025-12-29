@@ -86,8 +86,8 @@ const Navbar = () => {
           className="flex items-center gap-2 cursor-pointer"
           onClick={() => navigate("/")}
         > 
-          <img src={devnest} alt="" className="w-16 h-12"/>
-          <span className="text-2xl font-extrabold tracking-widest bg-linear-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent">
+          <img src={devnest} alt="" className="w-10 h-8 md:w-16 md:h-12"/>
+          <span className="text-xl md:text-2xl font-extrabold tracking-widest bg-linear-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent">
             DevNest
           </span>
         </div>
