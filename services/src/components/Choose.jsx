@@ -1,55 +1,80 @@
-import React, {useRef} from 'react'
-import gsap from 'gsap';
-import { useGSAP } from '@gsap/react';
+import React, { useRef } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { useSelector } from "react-redux";
 
 const Choose = () => {
-    const sectionRef = useRef(null);
-    useGSAP(() => {
+  const sectionRef = useRef(null);
+  const theme = useSelector((state) => state.theme.mode);
+
+  useGSAP(() => {
     gsap.from(sectionRef.current, {
-        y:60,
-        opacity:0,
-        ease:0.3,
-        scrollTrigger:{
-            trigger: sectionRef.current,
-            start: "top 50%",
-            end:"top 20%",
-            scrub: true,
-        }
-    })
-  },[])
+      y: 60,
+      opacity: 0,
+      ease: 0.3,
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top 50%",
+        end: "top 20%",
+        scrub: true,
+      },
+    });
+  }, []);
+
   return (
-    <section className="bg-linear-to-r from-blue-500 to-blue-700 text-white py-24 px-4" id='choose-section'>
+    <section
+      id="choose-section"
+      className={`py-24 px-4 transition-colors duration-300 ${
+        theme === "dark"
+          ? "bg-linear-to-r from-gray-900 to-gray-800 text-white"
+          : "bg-linear-to-r from-blue-500 to-blue-700 text-white"
+      }`}
+    >
       <div className="max-w-6xl mx-auto text-center" ref={sectionRef}>
         <h1 className="text-4xl mb-12 font-extrabold">Why Choose Us?</h1>
+
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
-          <div className="cursor-pointer bg-white/10 p-6 rounded-lg shadow-lg hover:scale-105 hover:bg-white/20 transition-all">
-            <h2 className="text-2xl font-semibold mb-3">Fast Delivery</h2>
-            <p>We value your time. Our streamlined processes ensure your project is delivered quickly without compromising on quality.</p>
-          </div>
-
-          <div className="cursor-pointer bg-white/10 p-6 rounded-lg shadow-lg hover:bg-white/20 hover:scale-105 transition-all">
-            <h2 className="text-2xl font-semibold mb-3">Clean UI/UX</h2>
-            <p>A website isn’t just about functionality—it’s about experience. We design intuitive interfaces that your users will love.</p>
-          </div>
-
-          <div className="cursor-pointer bg-white/10 p-6 rounded-lg shadow-lg hover:bg-white/20 hover:scale-105 transition-all">
-            <h2 className="text-2xl font-semibold mb-3">Scalable Code</h2>
-            <p>Our solutions are built to grow with your business. Clean, maintainable code means adding features later is seamless.</p>
-          </div>
-
-          <div className="cursor-pointer bg-white/10 p-6 rounded-lg shadow-lg hover:bg-white/20 hover:scale-105 transition-all">
-            <h2 className="text-2xl font-semibold mb-3">Ongoing Support</h2>
-            <p>We don’t disappear after launch. Our team is always ready to help you with updates, improvements, or troubleshooting.</p>
-          </div>
-
-          <div className="cursor-pointer hover:scale-105 bg-white/10 p-6 rounded-lg shadow-lg hover:bg-white/20 transition-all md:col-span-2 lg:col-span-1">
-            <h2 className="text-2xl font-semibold mb-3">Affordable Pricing</h2>
-            <p>Top-notch quality doesn’t have to break the bank. We offer competitive pricing tailored to your needs. Partner with us and experience web development that’s fast, reliable, and built for growth.</p>
-          </div>
+          {[
+            {
+              title: "Fast Delivery",
+              text: "We value your time. Our streamlined processes ensure your project is delivered quickly without compromising on quality.",
+            },
+            {
+              title: "Clean UI/UX",
+              text: "A website isn’t just about functionality—it’s about experience. We design intuitive interfaces that your users will love.",
+            },
+            {
+              title: "Scalable Code",
+              text: "Our solutions are built to grow with your business. Clean, maintainable code means adding features later is seamless.",
+            },
+            {
+              title: "Ongoing Support",
+              text: "We don’t disappear after launch. Our team is always ready to help you with updates, improvements, or troubleshooting.",
+            },
+            {
+              title: "Affordable Pricing",
+              text: "Top-notch quality doesn’t have to break the bank. We offer competitive pricing tailored to your needs. Partner with us and experience web development that’s fast, reliable, and built for growth.",
+              span: "md:col-span-2 lg:col-span-1",
+            },
+          ].map((item, i) => (
+            <div
+              key={i}
+              className={`cursor-pointer p-6 rounded-lg shadow-lg transition-all hover:scale-105 ${
+                item.span ?? ""
+              } ${
+                theme === "dark"
+                  ? "bg-white/5 hover:bg-white/10"
+                  : "bg-white/10 hover:bg-white/20"
+              }`}
+            >
+              <h2 className="text-2xl font-semibold mb-3">{item.title}</h2>
+              <p>{item.text}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Choose
+export default Choose;
