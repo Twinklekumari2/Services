@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate, useLocation } from "react-router-dom";
 import devnest from './../assets/devnest.png'
+import ThemeToggle from "./../components/ThemeToggler";
 
 const menuData = {
   Home: {
@@ -140,6 +141,9 @@ const Navbar = () => {
         </div>
 
         {/* MOBILE MENU ICON */}
+        <div>
+          <ThemeToggle/>
+        </div>
         <div className="lg:hidden">
           <i className="ri-menu-3-line text-3xl cursor-pointer" 
           onClick={() => setMobileOpen(!mobileOpen)}
